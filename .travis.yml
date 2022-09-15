@@ -11,3 +11,10 @@ after_success:
   - docker build -t nghilt19411/multi-nginx ./nginx
   - docker build -t nghilt19411/multi-server ./server
   - docker build -t nghilt19411/multi-worker ./worker
+  # Login to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u $DOCKER_ID" --password-stdin
+  # Push to docker hub
+  - docker push nghilt19411/multi-client
+  - docker push nghilt19411/multi-nginx
+  - docker push nghilt19411/multi-server
+  - docker push nghilt19411/multi-worker
